@@ -2,14 +2,7 @@
 
 module tron (
         Clk, SCEN, Reset, Start, Ack,
-        q_I, q_Straight, q_Turn, q_Collision,
-        BtnL, BtnU, BtnD, BtnR,            // the Left, Up, Down, and the Right buttons BtnL, BtnR,
-		BtnC,                              // the center button (this is our reset in most of our designs)
-		Ld7, Ld6, Ld5, Ld4, Ld3, Ld2, Ld1, Ld0, // 8 LEDs
-		An3, An2, An1, An0,			       // 4 anodes
-		An7, An6, An5, An4,                // another 4 anodes which are not used
-		Ca, Cb, Cc, Cd, Ce, Cf, Cg,        // 7 cathodes
-		Dp,                                 // Dot Point Cathode on SSDs
+        q_I, q_Driving, q_Collision, q_Done,
         hSync, vSync, vgaR, vgaG, vgaB
 	);
 
@@ -17,13 +10,6 @@ module tron (
 
     output hSync, vSync,
 	output [3:0] vgaR, vgaG, vgaB,
-
-    // LEDs
-	output 	Ld0, Ld1, Ld2, Ld3, Ld4, Ld5, Ld6, Ld7;
-	// SSD Outputs
-	output 	Cg, Cf, Ce, Cd, Cc, Cb, Ca, Dp;
-	output 	An0, An1, An2, An3;	
-	output 	An4, An5, An6, An7;	
 
     output q_I, q_Straight, q_Turn, q_Collision;
     reg[3:0] state;
