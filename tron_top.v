@@ -4,6 +4,7 @@
 
 module tron_top
         (
+            MemOE, MemWR, RamCS, QuadSpiFlashCS,
             BtnL, BtnU, BtnD, BtnR,            // the Left, Up, Down, and the Right buttons BtnL, BtnR,
             BtnC,                              // the center button (this is our reset in most of our designs)
             Sw0,                                // Switch to reset
@@ -25,6 +26,8 @@ module tron_top
     input Sw0;
 
     /*  OUTPUTS */
+    output 	MemOE, MemWR, RamCS, QuadSpiFlashCS;
+
     // LEDS
     output  Ld7, Ld6, Ld5, Ld4, Ld3, Ld2, Ld1, Ld0;
 
@@ -49,6 +52,10 @@ module tron_top
     reg [3:0]	SSD;
 	wire [3:0]	SSD3, SSD2, SSD1, SSD0;
 	reg [7:0]   SSD_CATHODES;
+
+    // Disable Memory Modules
+    assign {MemOE, MemWR, RamCS, QuadSpiFlashCS} = 4'b1111;
+
 
 // CLOCK DIVISION
 
